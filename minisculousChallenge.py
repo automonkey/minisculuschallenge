@@ -9,7 +9,7 @@ def getResourceFromReferenceUrl(referenceUrl):
 questions = QuestionRetriever()
 question1 = questions.getFirstQuestion()
 
-decoder = Decoder()
+decoder = Decoder(6)
 
 question1Answer = decoder.decodeString(question1['question'])
 question2 = questions.getNextQuestion(getResourceFromReferenceUrl(question1['reference-url']), question1Answer)

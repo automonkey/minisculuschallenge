@@ -8,13 +8,15 @@ characters = [
   ]
 
 class Decoder:
+  def __init__(self, cog1Setting):
+      self.cog1Setting = cog1Setting
+
   def decodeChar(self, encodedChar):
     encodedCharIndex = characters.index(encodedChar)
-    decodedCharIndex = encodedCharIndex + 6
+    decodedCharIndex = encodedCharIndex + self.cog1Setting
 
     charactersLength = len(characters)
-    if decodedCharIndex > charactersLength:
-      decodedCharIndex -= charactersLength
+    decodedCharIndex = decodedCharIndex % charactersLength
 
     return characters[decodedCharIndex]
 
