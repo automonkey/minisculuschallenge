@@ -8,12 +8,13 @@ characters = [
   ]
 
 class Decoder:
-  def __init__(self, cog1Setting):
-      self.cog1Setting = cog1Setting
+  def __init__(self, cog1=0, cog2=0):
+      self.cog1Setting = cog1
+      self.cog2Setting = cog2
 
   def decodeChar(self, encodedChar):
     encodedCharIndex = characters.index(encodedChar)
-    decodedCharIndex = encodedCharIndex + self.cog1Setting
+    decodedCharIndex = encodedCharIndex + self.cog1Setting - (self.cog2Setting * 2)
 
     charactersLength = len(characters)
     decodedCharIndex = decodedCharIndex % charactersLength
@@ -25,4 +26,3 @@ class Decoder:
     for c in encodedString:
       decodedString += self.decodeChar(c)
     return decodedString
-
